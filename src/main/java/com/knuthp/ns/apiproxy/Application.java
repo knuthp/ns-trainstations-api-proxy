@@ -1,4 +1,4 @@
-package hello;
+package com.knuthp.ns.apiproxy;
 
 import java.util.Arrays;
 

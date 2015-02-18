@@ -1,4 +1,4 @@
-package hello;
+package com.knuthp.ns.apiproxy;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;

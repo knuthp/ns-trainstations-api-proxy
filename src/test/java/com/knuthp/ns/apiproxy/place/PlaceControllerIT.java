@@ -1,7 +1,7 @@
-package hello;
+package com.knuthp.ns.apiproxy.place;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import java.net.URL;
 
@@ -17,11 +17,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
+import com.knuthp.ns.apiproxy.Application;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest({"server.port=0"})
-public class HelloControllerIT {
+public class PlaceControllerIT {
 
     @Value("${local.server.port}")
     private int port;
@@ -31,13 +33,15 @@ public class HelloControllerIT {
 
 	@Before
 	public void setUp() throws Exception {
-		this.base = new URL("http://localhost:" + port + "/");
+		this.base = new URL("http://localhost:" + port + "/Place");
 		template = new TestRestTemplate();
 	}
 
+
 	@Test
-	public void getHello() throws Exception {
+	public void getPlaces() throws Exception {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		assertThat(response.getBody(), is("Greetings from Spring Boot!"));
 	}
+
 }
